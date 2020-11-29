@@ -18,7 +18,8 @@ if __name__ == '__main__':   # 使得run.py import到其他.py中时，此句子
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
     np.random.seed(args.seed)
-
+    
+    # 异常处理
     try:
         os.makedirs(args.output)
     except OSError:
@@ -27,16 +28,19 @@ if __name__ == '__main__':   # 使得run.py import到其他.py中时，此句子
         os.makedirs(args.log)
     except OSError:
         pass
-
+    
+    # 加载训练数据和测试数据
     train_loader, test_loader = get_data(args)
-
+    
+    # 如果有cuda就用cuda
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     input_size = 28*28
     output_size = args.num_classes
     model = DNN(input_size=input_size, output_size=output_size).to(device)
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
-
+    
+    # 每训练完一个mini-batch就计算一次loss，acc
     model.train()
     for epoch in range(args.epochs):
         correct = 0
@@ -59,7 +63,8 @@ if __name__ == '__main__':   # 使得run.py import到其他.py中时，此句子
             if (idx + 1) % 100 == 0:
                 print('Epoch: [{}/{}], Step: [{}/{}], Loss: {:.4f}, Acc: {:.4f}'
                       .format(epoch + 1, args.epochs, idx + 1, len(train_loader), loss.item(), 100 * correct / total))
-
+    
+    # 保存模型参数
     torch.save(model.state_dict(), os.path.join('./log', '{}_{}_{}.ckpt'.format(args.model, args.dataset, args.epochs)))
     model.eval()
     with torch.no_grad():
