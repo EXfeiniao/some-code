@@ -1,4 +1,4 @@
-# feiniao学习过程中的代码:  
+# feiniao  学习过程中的代码:  
 ## 2020/11/29
 common是随书的一个包，里面是成套的NN工具，包括各种function, layers, trainer  
 dataset是随书的一个包，里面是有关mnist的库、和一些资源文件  
