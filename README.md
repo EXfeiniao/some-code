@@ -9,3 +9,8 @@
 其他的文件如名，没有太多实际的内容，很多是固定参数，不成套的内容  
 **sample_weight.pkl**是一个用于保存weight值的文件(实际上只有神经网络的推理这个文件用到了)  
 ## 2020/12/6
+更新了**two_layer_net**，**main**  
+**two_layer_net**：使用有序字典添加了生成层，使用了ReLu
+**main**：用新的**two_layer_net**，效果好多了，有loss的输出  
+我很想它还能显示图像什么的，但是失败了  
+**back-layers**和**layer_naive**是学反向传播写的代码
