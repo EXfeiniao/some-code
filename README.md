@@ -14,3 +14,7 @@
 **main**：用新的**two_layer_net**，效果好多了，有loss的输出  
 我很想它还能显示图像什么的，但是失败了  
 **back-layers**和**layer_naive**是学反向传播写的代码
+## 2020/12/13
+更新了**显示图像**，**main**  
+**显示图像**：多了个trans，来转化one-hot-vector   
+**main**：现在可以显示图像了  
