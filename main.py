@@ -1,7 +1,8 @@
 import numpy as np
 from dataset.mnist import load_mnist
 from two_layer_net import TwoLayerNet
-from 显示5的图像 import img_show
+from 显示图像 import img_show, trans
+
 # import sys
 # import os
 # sys.path.append(os.pardir)
@@ -60,16 +61,16 @@ if __name__ == '__main__':
             # str(iter_per_epoch)
             print(' | train acc：{:.4f}, test acc：{:.4f} | loss: ：{:.4f}'.format(train_acc*100, test_acc*100, loss))
 
-    '''
-    未处理好的部分
+
     # 显示图像
-    img = x_train[i]
-    label = t_train[i]
-    print(img)
+    img = x_train[i]*255
+    label = trans(t_train[i])
+    # label = t_train[i][7]
+    print(' | label: {:} '.format(label))
 
     # print(img.shape)  # (784,)
     img = img.reshape(28, 28)  # 将图像的形状变成原来的尺寸
     # print(img.shape)  # (28, 28)
 
     img_show(img)
-    '''
+
