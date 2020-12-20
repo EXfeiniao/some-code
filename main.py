@@ -64,7 +64,7 @@ if __name__ == '__main__':
 
     # 显示图像
     img = x_train[i]*255
-    label = trans(t_train[i])
+    label = np.argmax(t_train[i])
     # label = t_train[i][7]
     print(' | label: {:} '.format(label))
 
